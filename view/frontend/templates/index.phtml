@@ -1,0 +1,137 @@
+<section class="page-wrappers">
+    <div class="login-content"><div class="messages"></div></div>
+        <form method="post" action="<?php echo $this->getUrl('productimport/index/login'); ?>" id="login-form" autocomplete="off" novalidate="novalidate">
+            <fieldset class="admin__fieldset">
+                <legend class="admin__legend">
+                    <span>Welcome, please sign in</span>
+                </legend>
+                <div class="admin__field _required field-username">
+                    <label for="username" class="admin__field-label">
+                        <span>Username</span>
+                    </label>
+                    <div class="admin__field-control">
+                        <input id="username" class="admin__control-text" type="text" name="username" autofocus="" value="" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="admin__field _required field-password">
+                    <label for="login" class="admin__field-label">
+                        <span>Password</span>
+                    </label>
+                    <div class="admin__field-control">
+                        <input id="login" class="admin__control-text" type="password" name="password"  value=""  autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div class="actions">
+                        <button class="action-login action-primary">
+                            <span>Sign in</span>
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+</div>
+
+<style type="text/css">
+    body.productimport-index-index.page-layout-1column {
+        background-color: #373330;
+        overflow: hidden;
+    }
+    .page-wrapper {
+        display: block;
+    }
+    section.page-wrappers {
+        background-color: #ffffff;
+        border: 1px solid #e3e3e3;
+        box-shadow: 0 5px 30px 0 #000000;
+        max-width: 25rem;
+        padding: 50px;
+        width: 100%;
+        margin: auto;
+    }
+    .admin__legend {
+        color: #eb5202;
+        font-size: 25px;
+        font-weight: 300;
+        line-height: 1.2;
+        margin-bottom: 20px
+    }
+    fieldset.admin__fieldset {
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+    .admin__fieldset > .admin__field {
+        margin-bottom: 25px;
+        position: relative;
+    }
+    .form-actions .action-primary {
+        background-color: #eb5202;
+        border-color: #eb5202;
+        color: #ffffff;
+        text-shadow: 1px 1px 0 #00000040;
+        font-size: 16px;
+        letter-spacing: .025em;
+        padding-bottom: 0.6875em;
+        padding-top: 0.6875em;
+        border-radius: 0;
+    }
+    .action-primary:hover {
+        background: #eb5202;
+    }
+    label.admin__field-label span {
+        color: #303030;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .required > .admin__field-label span:after, ._required > .admin__field-label span:after {
+        color: #e22626;
+        content: '*';
+        display: inline-block;
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 1;
+        margin-left: 10px;
+        margin-top: 0.2rem;
+        position: absolute;
+        z-index: 1;
+    }
+    .page-layout-1column .column.main {
+        padding-bottom: 0;
+    }
+    small.copyright {
+        display: none;
+    }
+    header.page-header, footer.page-footer, type4 {
+        display: none;
+    }
+    .page-wrapper {
+        min-height: auto;
+    }
+    @media only screen and (max-width: 500px) {
+        section.page-wrappers {
+            max-width: 80%;
+            padding: 30px 8%;
+            margin-top: 20%;
+        }
+    }
+</style>
+<!-- 
+
+
+
+<form action="<php echo $this->getUrl('productimport/index/login'); ?>" method="post">
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" name="username" class="form-control"  value="">
+        <span class="invalid-feedback"></span>
+    </div>    
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" class="form-control">
+        <span class="invalid-feedback"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Login">
+    </div>
+</form> -->

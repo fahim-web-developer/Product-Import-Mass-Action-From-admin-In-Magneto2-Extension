@@ -1,0 +1,140 @@
+ 
+<form class="upload-form" name="UploadFrom" action="<?php echo $this->getUrl('productimport/index/uploadfile'); ?>" id="upload-form" method="post" enctype='multipart/form-data' autocomplete="off"> 
+
+    <label>Upload CSV File only</label> 
+    <input type="file" name="upload_file" id="file-upload" required accept=".csv"/>
+    <button type="submit"
+            class="action submit primary "
+            title="<?= $block->escapeHtml('Submit') ?>" >
+            <span>
+              <?= $block->escapeHtml('Submit') ?>
+            </span>
+    </button>
+</form>
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-6">
+            <div class="Category-tab"><h3>Category Name And Id List</h3></div>
+            <table class="table category">
+              <thead>
+                <tr>
+                  <th scope="col">Category Name</th>
+                  <th scope="col">Id</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php $cat = $block->getTree();?>
+                    <?php foreach ($cat as $row => $value):?>
+                        <?php if ($row > 1):?>
+                    <tr>
+                      <td><?= $value->getName(); ?></td>
+                      <td><?= $value->getEntityId(); ?></td>
+                    </tr>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+              </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <div class="att-tab"><h3>Visibility Name And Code List</h3></div>
+            <table class="table att">
+              <thead>
+                <tr>
+                  <th scope="col">Visibility Option</th>
+                  <th scope="col">Id</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php $cat = $block->getattributeValue('visibility');?>
+                    <?php foreach ($cat as $row => $value):?>
+                    <tr>
+                      <td><?= $value['label'] ?></td>
+                      <td><?= $value['value'] ?></td>
+                    </tr> 
+                    <?php endforeach; ?>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+  require(['jquery'], function($){
+         
+
+        $('#file-upload').change(function () {
+            var fileExtension = ['csv'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                alert("Only '.csv' format is allowed.");
+                this.value = ''; // Clean field
+                return false;
+            }
+        });
+
+        $(document).ready(function(){
+          $(".Category-tab").click(function(){
+            $(".table.category").toggle();
+          });
+           $(".att-tab").click(function(){
+            $(".table.att").toggle();
+          });
+        });
+
+    });
+</script>
+<style type="text/css">
+    form#upload-form {
+        width: 30%;
+        margin: auto;
+        padding: 50px 20px;
+        border: 1px solid;
+    }
+	.col-6 {
+    overflow: auto;
+    height: 300px;
+}
+    button.action.submit.primary {
+        background: #000;
+        border-color: #000;
+        padding: 6px 20px;
+        height: auto;
+        width: 100%;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    .upload-form input {
+        width: 100%;
+    }
+    form#upload-form {
+        margin-top: 5%;
+    }
+    @media only screen and (max-width: 991px) {
+        form#upload-form {
+            width: 50%;
+        }
+    }
+    @media only screen and (max-width: 991px) {
+        form#upload-form {
+            margin-top: 30%;
+            width: 80%;
+        }
+    }
+
+    table.table.att,
+    table.table.category{
+        display: none;
+    }
+    .att-tab,
+    .Category-tab {
+        border: 1px solid #000;
+        border-radius: 5px;
+        padding: 5px 10px;
+        background: #f7f7f7;
+        cursor: pointer;
+    }
+    .att-tab h3,
+    .Category-tab h3 {
+        margin: 0;
+    }
+</style>
